@@ -1,3 +1,4 @@
+import playsound as playsound
 from google.cloud import texttospeech
 
 from Main import syntesis
@@ -63,25 +64,29 @@ def test():
                 break
             else:
                 try:
-                  speech_rate = float(speech_rate)
-                  break
+                    speech_rate = float(speech_rate)
+                    break
                 except ValueError:
-                  print("Неверный формат числа, попробуйте ещё раз")
-                  continue
+                    print("Неверный формат числа, попробуйте ещё раз")
+                    continue
         while True:
             confirmation = input("Введённые параметры:\n"
-                                    "Текст: " + text+"\n"
-                                    "Язык: "+lang + "\n"
-                                    "Пол: "+gender_str+"\n"
-                                    "Скорость чтения: "+str(speech_rate)+"\n"
-                                    "Подтверждаете ввод?\n1 - Да\n2 - Нет, начать занова\n")
+                                 "Текст: " + text + "\n"
+                                                    "Язык: " + lang + "\n"
+                                                                      "Пол: " + gender_str + "\n"
+                                                                                             "Скорость чтения: " + str(
+                speech_rate) + "\n"
+                               "Подтверждаете ввод?\n1 - Да\n2 - Нет, начать занова\n")
             if confirmation == "1":
-                 syntesis(text, lang, gender, speech_rate)
-                 break
+                syntesis(text, lang, gender, speech_rate)
+                break
             elif confirmation == "2":
                 break
             else:
                 print("Неверный ввод, попробуйте ещё раз.")
                 continue
+        print("Не пугайтесь, это я воспроивожу результат.")
+        playsound.playsound('output.mp3')
+        print("Готово, результат сохранён в файле output.mp3")
 
 test()
