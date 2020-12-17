@@ -51,6 +51,7 @@ def test():
             elif gender == "3":
                 gender = texttospeech.SsmlVoiceGender.NEUTRAL
                 gender_str = "Нейтральный"
+                break
             else:
                 print("Пол не распознан, попробуйте ещё раз.")
                 continue
